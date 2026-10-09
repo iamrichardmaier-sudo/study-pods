@@ -63,3 +63,7 @@ Go to Settings → Pages → *Deploy from a branch* and pick `main` with `/ (roo
 To preview locally, run `npx http-server` (or any server that supports HTTP Range requests, which seeking needs) and open the URL it prints.
 
 The two seed episodes use placeholder tone audio. Delete their entries and files once real episodes start arriving.
+
+## iPhone widget (Scriptable)
+
+`scriptable/study-pods-widget.js` is a script for the [Scriptable](https://scriptable.app) app. Paste it into a new script and add a Scriptable widget (small, medium or large) to the home screen, choosing that script. The widget shows the latest episodes. Running the script in the app lists every episode by class. Tapping an episode opens it in the site's player through a deep link (`index.html#ep=<id>`). Change `SITE` at the top of the script if the Pages URL is different.

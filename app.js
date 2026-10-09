@@ -309,6 +309,13 @@ if ("mediaSession" in navigator) {
 
 /* ---------- boot ---------- */
 
+// Deep link: index.html#ep=<id> opens that episode in the player (used by the Scriptable widget).
+function openFromHash() {
+  const e = episodes.find((x) => x.id === new URLSearchParams(location.hash.slice(1)).get("ep"));
+  if (e) { open(e, false); toggleSheet(true); }
+}
+addEventListener("hashchange", openFromHash);
+
 $("speed").textContent = `${state.speed}×`;
 syncPlayIcons();
 
@@ -317,6 +324,7 @@ fetch("episodes.json", { cache: "no-cache" })
   .then((data) => {
     episodes = data.sort((a, b) => String(b.date).localeCompare(String(a.date)));
     render();
+    openFromHash();
   })
   .catch(() => {
     $("empty").hidden = false;
