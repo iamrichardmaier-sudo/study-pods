@@ -1,0 +1,22 @@
+[
+  {
+    "id": "ihum242-socratic-method",
+    "title": "The Socratic Method, Unpacked",
+    "class": "IHUM 242",
+    "date": "2026-10-07",
+    "duration_seconds": 75,
+    "audio_url": "audio/ihum242-socratic-method.mp3",
+    "art_url": "art/ihum242-socratic-method.svg",
+    "description": "Sample episode. Elenchus, aporia, and why Socrates kept insisting he knew nothing."
+  },
+  {
+    "id": "econ380-supply-demand",
+    "title": "Supply, Demand & Where They Cross",
+    "class": "ECON 380",
+    "date": "2026-10-03",
+    "duration_seconds": 90,
+    "audio_url": "audio/econ380-supply-demand.mp3",
+    "art_url": "art/econ380-supply-demand.svg",
+    "description": "Sample episode. Equilibrium, shifts vs. movements along the curve, and elasticity intuition."
+  }
+]

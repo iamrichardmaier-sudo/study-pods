@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3d2a5c"/><stop offset="1" stop-color="#c9a3e6"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <g fill="#fff4e3" opacity=".9">
+    <rect x="170" y="150" width="34" height="290" rx="8"/>
+    <rect x="283" y="150" width="34" height="290" rx="8"/>
+    <rect x="396" y="150" width="34" height="290" rx="8"/>
+    <rect x="140" y="110" width="320" height="34" rx="8"/>
+    <rect x="140" y="446" width="320" height="34" rx="8"/>
+  </g>
+  <text x="48" y="560" font-family="Georgia, serif" font-size="58" font-weight="700" fill="#fff4e3">IHUM 242</text>
+</svg>

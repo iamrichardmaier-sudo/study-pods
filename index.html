@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120e0b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Study Pods</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%23f2a65a'/><g fill='%23120e0b'><rect x='8' y='12' width='3' height='8' rx='1.5'/><rect x='14.5' y='8' width='3' height='16' rx='1.5'/><rect x='21' y='11' width='3' height='10' rx='1.5'/></g></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Study Pods</span>
+      </div>
+      <p class="hello" id="hello"></p>
+      <p class="stats" id="stats"></p>
+    </header>
+
+    <button id="resume" class="resume" hidden></button>
+
+    <nav class="chips" id="chips" aria-label="Filter by class"></nav>
+
+    <div id="classes"></div>
+    <p class="empty" id="empty" hidden>No episodes yet. Fresh ones land here automatically.</p>
+  </main>
+
+  <!-- Mini player (docked) -->
+  <div class="mini" id="mini" hidden>
+    <div class="mini-progress"><span id="miniBar"></span></div>
+    <button class="mini-open" id="miniOpen" aria-label="Open player">
+      <img id="miniArt" alt="">
+      <span class="mini-text">
+        <strong id="miniTitle"></strong>
+        <small id="miniClass"></small>
+      </span>
+    </button>
+    <button class="icon-btn" id="miniPlay" aria-label="Play"></button>
+  </div>
+
+  <!-- Full player sheet -->
+  <div class="sheet" id="sheet" aria-hidden="true" role="dialog" aria-label="Now playing">
+    <div class="sheet-bg" id="sheetBg"></div>
+    <div class="sheet-inner">
+      <button class="sheet-close" id="sheetClose" aria-label="Close player">
+        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <img class="sheet-art" id="sheetArt" alt="">
+      <div class="sheet-meta">
+        <span class="tag" id="sheetClass"></span>
+        <h2 id="sheetTitle"></h2>
+        <p id="sheetDesc"></p>
+      </div>
+
+      <div class="scrub">
+        <input type="range" id="seek" min="0" max="1000" value="0" aria-label="Seek">
+        <div class="times"><span id="cur">0:00</span><span id="left">-0:00</span></div>
+      </div>
+
+      <div class="controls">
+        <button class="speed" id="speed" aria-label="Playback speed">1×</button>
+        <button class="icon-btn skip" id="back" aria-label="Back 15 seconds">
+          <svg viewBox="0 0 24 24"><path d="M3 3.5v5h5"/><path d="M3.6 8.5A9 9 0 1 1 3 12"/></svg><b>15</b>
+        </button>
+        <button class="play-big" id="play" aria-label="Play"></button>
+        <button class="icon-btn skip" id="fwd" aria-label="Forward 15 seconds">
+          <svg viewBox="0 0 24 24"><path d="M21 3.5v5h-5"/><path d="M20.4 8.5A9 9 0 1 0 21 12"/></svg><b>15</b>
+        </button>
+        <button class="speed ghost" id="restart" aria-label="Restart episode">
+          <svg viewBox="0 0 24 24"><path d="M4 4v6h6"/><path d="M4.5 15a8 8 0 1 0 1.9-8.3L4 10"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
