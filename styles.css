@@ -58,6 +58,20 @@ svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width:
 .logo i:nth-child(3) { height: 10px; animation-delay: -0.8s; }
 @keyframes bar { 50% { transform: scaleY(0.5); } }
 
+/* Study hub link (top corner) */
+.hub-link {
+  margin-left: auto; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 9px;
+  border-radius: 999px; text-decoration: none; color: #e7d4f5; font: 700 13px var(--body); letter-spacing: 0;
+  background: linear-gradient(135deg, rgba(201, 163, 230, 0.22), rgba(201, 163, 230, 0.06));
+  border: 1px solid rgba(201, 163, 230, 0.35);
+  box-shadow: 0 8px 24px -12px rgba(201, 163, 230, 0.6);
+  transition: transform .18s, background .2s;
+}
+.hub-link:hover { background: linear-gradient(135deg, rgba(201, 163, 230, 0.32), rgba(201, 163, 230, 0.1)); }
+.hub-link:active { transform: scale(.96); }
+.hub-link svg { width: 20px; height: 20px; stroke-width: 1.6; color: #c9a3e6; }
+@media (max-width: 380px) { .hub-link span { display: none; } .hub-link { padding: 7px; } }
+
 .hello { margin: 22px 0 4px; font: 700 clamp(32px, 8vw, 52px)/1.05 var(--display); letter-spacing: -0.02em; }
 .hello em { font-style: italic; color: var(--amber); }
 .stats { margin: 0; color: var(--muted); font-size: 14px; }

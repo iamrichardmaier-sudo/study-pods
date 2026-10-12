@@ -20,7 +20,7 @@ const audio = $("audio");
 
 let episodes = [];
 let current = null;   // episode object currently loaded
-let filter = "All";
+let filter = decodeURIComponent((location.hash.match(/class=([^&]+)/) || [])[1] || "All"); // e.g. #class=IHUM%20242
 let state = load();   // { speed, progress: { [id]: { t, done } } }
 
 /* ---------- storage ---------- */

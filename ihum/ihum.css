@@ -1,0 +1,58 @@
+/* Islamic Humanities pages. Builds on ../styles.css tokens. */
+.ihum { --accent: #c9a3e6; --violet: #c9a3e6; }
+.ihum .glow {
+  background:
+    radial-gradient(60vmax 50vmax at 0% -10%, rgba(201, 163, 230, 0.18), transparent 60%),
+    radial-gradient(50vmax 40vmax at 110% 30%, rgba(242, 166, 90, 0.10), transparent 60%),
+    radial-gradient(60vmax 40vmax at 50% 120%, rgba(90, 60, 120, 0.25), transparent 60%);
+}
+a { color: inherit; }
+
+.back {
+  display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px 6px 6px; border-radius: 999px;
+  text-decoration: none; color: var(--muted); font: 700 13px var(--body);
+  background: var(--surface); border: 1px solid var(--line);
+}
+.back:hover { color: var(--text); }
+.back svg { width: 18px; height: 18px; }
+
+.kicker { margin: 26px 0 0; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--violet); }
+.ihum .hello { margin-top: 6px; }
+.ihum .hello em { color: var(--violet); }
+.ihum .stats { max-width: 46ch; }
+
+/* Tool cards */
+.tools { display: grid; gap: 12px; margin-top: 30px; }
+@media (min-width: 720px) { .tools { grid-template-columns: 1fr 1fr; } }
+.tool {
+  position: relative; display: flex; gap: 16px; align-items: center; padding: 16px;
+  border-radius: 22px; background: var(--surface); border: 1px solid var(--line);
+  text-decoration: none; transition: transform .18s, background .2s, border-color .2s;
+  animation: rise .5s both;
+}
+.tool:nth-child(2) { animation-delay: 60ms; } .tool:nth-child(3) { animation-delay: 120ms; } .tool:nth-child(4) { animation-delay: 180ms; }
+a.tool:hover { background: var(--surface-2); border-color: rgba(201, 163, 230, .3); }
+a.tool:active { transform: scale(.98); }
+.tool-live {
+  background: linear-gradient(135deg, rgba(201, 163, 230, 0.20), rgba(242, 166, 90, 0.08) 70%), var(--surface);
+  border-color: rgba(201, 163, 230, .35);
+}
+@media (min-width: 720px) { .tool-live { grid-column: 1 / -1; padding: 22px; } }
+.tool-art {
+  flex: none; display: grid; place-items: center; width: 58px; height: 58px; border-radius: 16px;
+  background: rgba(201, 163, 230, .14); color: var(--violet);
+}
+.tool-live .tool-art { width: 70px; height: 70px; background: var(--violet); color: var(--bg); box-shadow: 0 12px 30px -10px rgba(201, 163, 230, .7); }
+.tool-art svg { width: 28px; height: 28px; stroke-width: 1.7; }
+.tool-live .tool-art svg { width: 34px; height: 34px; }
+.tool-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.tool-body strong { font: 700 18px/1.25 var(--display); }
+.tool-live .tool-body strong { font-size: 21px; }
+.tool-body small { color: var(--muted); font-size: 13.5px; }
+.tool-tag { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--violet); }
+.tool-best { margin-top: 6px; font-size: 12.5px; font-weight: 700; color: var(--honey); }
+.tool-best:empty { display: none; }
+.tool-go { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(201, 163, 230, .14); color: var(--violet); }
+.tool-go svg { width: 20px; height: 20px; }
+.tool-soon { opacity: .55; }
+.tool-soon .tool-tag { color: var(--muted); }

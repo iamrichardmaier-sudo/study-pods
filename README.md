@@ -63,3 +63,19 @@ Go to Settings → Pages → *Deploy from a branch* and pick `main` with `/ (roo
 To preview locally, run `npx http-server` (or any server that supports HTTP Range requests, which seeking needs) and open the URL it prints.
 
 The two seed episodes use placeholder tone audio. Delete their entries and files once real episodes start arriving.
+
+## Islamic Humanities hub (`ihum/`)
+
+The **Islamic Humanities** button in the top corner of the home page opens `ihum/index.html`, a hub for IHUM 242 study tools.
+
+```
+ihum/index.html    hub page (tool cards; add new tools here)
+ihum/ihum.css      shared styling for the hub pages
+ihum/map.html      Map Quest game: North Africa & the Middle East
+ihum/map.js        game logic (country list at the top)
+ihum/map-data.js   generated country outlines (don't edit by hand)
+ihum/flags/        flag SVGs from lipis/flag-icons (MIT)
+ihum/tools/        build_map.py, which regenerates map-data.js from Natural Earth GeoJSON
+```
+
+**Map Quest** shows a country name and flag; click it on the map. Countries turn green, yellow or orange depending on whether you got them on the 1st, 2nd or 3rd try. After three misses the right country flashes red and you have to click it to move on. First-try streaks earn bonus points, best scores are saved in `localStorage`, and the results screen lets you replay just the countries you missed. "Quiz countries" is the 26 lettered countries from the map quiz; "Full region" adds the 9 numbered small states.
