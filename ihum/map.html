@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120e0b">
+  <title>Map Quest</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%23c9a3e6'/><path d='M9 5L4 7v12l5-2 6 2 5-2V5l-5 2z' fill='none' stroke='%23120e0b' stroke-width='2' stroke-linejoin='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="ihum.css">
+  <link rel="stylesheet" href="map.css">
+</head>
+<body class="ihum game">
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="hud">
+    <a class="back" href="./" aria-label="Back to Islamic Humanities">
+      <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><span>IHUM</span>
+    </a>
+    <div class="hud-stats">
+      <span class="pill" title="Countries found"><b id="progress">0/26</b></span>
+      <span class="pill" title="Score"><b id="score">0</b><small>pts</small></span>
+      <span class="pill streak" id="streakPill" title="First-try streak">
+        <svg viewBox="0 0 24 24"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3-1-5.5 1-8.5z"/></svg><b id="streak">0</b>
+      </span>
+      <span class="pill" title="Time"><b id="timer">0:00</b></span>
+    </div>
+    <button class="round-btn" id="mute" aria-label="Mute sounds"></button>
+  </header>
+
+  <!-- Current target -->
+  <div class="prompt" id="prompt" hidden>
+    <img class="prompt-flag" id="flag" alt="">
+    <div class="prompt-text">
+      <small>Click on</small>
+      <strong id="target"></strong>
+    </div>
+    <div class="tries" id="tries" aria-label="Attempts left"><i></i><i></i><i></i></div>
+  </div>
+
+  <div class="stage" id="stage">
+    <svg id="map" role="img" aria-label="Map of North Africa and the Middle East"></svg>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <div class="zoom">
+      <button class="round-btn" id="zoomIn" aria-label="Zoom in"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+      <button class="round-btn" id="zoomOut" aria-label="Zoom out"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+      <button class="round-btn" id="zoomReset" aria-label="Reset view"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+
+    <ul class="legend" aria-label="Legend">
+      <li><i style="--c:var(--c1)"></i>1st try</li>
+      <li><i style="--c:var(--c2)"></i>2nd</li>
+      <li><i style="--c:var(--c3)"></i>3rd</li>
+      <li><i style="--c:var(--c4)"></i>Missed</li>
+    </ul>
+  </div>
+
+  <!-- Start screen -->
+  <div class="overlay" id="startScreen">
+    <div class="card">
+      <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4L3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></svg></span>
+      <p class="kicker">IHUM 242 · Map Quest</p>
+      <h1>North Africa &amp; the Middle East</h1>
+      <p class="muted">You get a country and its flag. Click it on the map. Three misses and the answer lights up for you to click.</p>
+
+      <div class="modes" role="radiogroup" aria-label="Country set">
+        <button class="mode" role="radio" data-mode="quiz" aria-checked="true">
+          <strong>Quiz countries</strong><small>The 26 lettered countries, A–Z</small><span class="mode-best" data-best="quiz"></span>
+        </button>
+        <button class="mode" role="radio" data-mode="full" aria-checked="false">
+          <strong>Full region</strong><small>+9 numbered small states (35)</small><span class="mode-best" data-best="full"></span>
+        </button>
+      </div>
+
+      <button class="cta" id="startBtn">Start</button>
+      <p class="hint">Scroll or pinch to zoom, drag to pan. Tiny countries get a dashed circle you can tap.</p>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="overlay" id="endScreen" hidden>
+    <div class="card">
+      <p class="kicker" id="endKicker">Round complete</p>
+      <h1 id="endTitle"></h1>
+      <div class="badge" id="record" hidden>New best!</div>
+      <div class="results">
+        <div><b id="rScore"></b><small>points</small></div>
+        <div><b id="rAcc"></b><small>first-try</small></div>
+        <div><b id="rTime"></b><small>time</small></div>
+        <div><b id="rStreak"></b><small>best streak</small></div>
+      </div>
+      <div class="review" id="review"></div>
+      <div class="end-actions">
+        <button class="cta ghost" id="practiceBtn">Practice misses</button>
+        <button class="cta" id="againBtn">Play again</button>
+      </div>
+      <button class="link-btn" id="menuBtn">Change mode</button>
+    </div>
+  </div>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script src="map-data.js"></script>
+  <script src="map.js"></script>
+</body>
+</html>
